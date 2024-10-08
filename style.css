@@ -1,0 +1,26 @@
+/* Estilos personalizados */
+body {
+    font-family: 'Arial', sans-serif;
+  }
+  
+  h1, h2 {
+    font-weight: bold;
+  }
+  
+  .card img {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .bg-primary {
+    background-color: #007bff !important;
+  }
+  
+  footer {
+    background-color: #343a40;
+  }
+  
+  footer p {
+    margin: 0;
+  }
+  

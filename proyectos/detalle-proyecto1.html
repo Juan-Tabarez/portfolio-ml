@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle del Proyecto 1</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Mi Portafolio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#proyectos">Proyectos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contacto">Contacto</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header del proyecto -->
+  <header class="bg-primary text-white text-center py-5">
+    <div class="container">
+      <h1>Housing</h1>
+      <p class="lead">Predicción del precio de venta de una casa a partir de varios predictores</p>
+    </div>
+  </header>
+
+  <!-- Sección de detalle del proyecto -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 mb-4">
+          <img src="../utils/housing/housinglogo.png" class="img-fluid" alt="Imagen del Proyecto">
+        </div>
+        <div class="col-lg-6">
+          <h2>Descripción del Proyecto</h2>
+          <p>Los objetivos de este proyecto son:</p>
+          <p>
+            1. Identificar cuáles atributos, entre los varios disponibles,son necesarios para predecir con exactitud la mediana
+            de precios de una casa
+          </p>
+          <p>
+            2. Construir un modelo de regresión lineal múltiple para predecir la mediana de los precios utilizando los
+            atributos más importantes
+          </p>
+          <p>
+            3. Evaluar la exactitud del modelo para predecir nuevos ejemplos
+          </p>
+          <p>
+            Debido a la naturaleza del enfoque de ajuste de funciones, una limitación importante que encontramos tiene que ver
+            con la dimensionalidad. A medida que la cantidad de atributos o predictores crece, se reduce nuestra capacidad para
+            obtener un buen modelo, pero además se agrega complejidad computacional y también se hace más difícil la
+            interpretación del modelo.
+            Revisaremos aquí algunos métodos de selección de características “feature selection” que permitan reducir el
+            número de predictores al mínimo posible sujeto a obtener un buen modelo.
+            Utilizando RapidMiner, veremos cómo realizar la preparación de los datos, la construcción del modelo y la validación.
+            Finalmente revisaremos que se cumplan algunos requerimientos para asegurar que la regresión lineal se utiliza
+            correctamente.
+          </p>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-lg-12">
+          <h3>Contexto y significado de cada atributo del dataset:</h3>
+          <p>
+            CRIM: tasa de criminalidad per cápita por ciudad.
+          </p>
+          <p>
+            ZN: proporción de terrenos residenciales zonificados para lotes mayores a 
+            25,000 pies cuadrados.
+          </p>
+          <p>
+            INDUS: proporción de acres de negocios no minoristas por ciudad.
+          </p>
+          <p>
+            CHAS: variable ficticia del río Charles (1 si la zona limita con el río; 0 en caso 
+            contrario).
+          </p>
+          <p>
+            NOX: concentración de óxidos nítricos (partes por cada 10 millones).
+          </p>
+          <p>
+            RM: número promedio de habitaciones por vivienda.
+          </p>
+          <p>
+            AGE: proporción de unidades ocupadas por sus propietarios construidas antes 
+            de 1940.
+          </p>
+          <p>
+            DIS: distancias ponderadas a cinco centros de empleo de Boston.
+          </p>
+          <p>
+            RAD: índice de accesibilidad a carreteras radiales.
+          </p>
+          <p>
+            TAX: tasa de impuestos a la propiedad por cada $10,000.
+          </p>
+          <p>
+            PTRATIO: ratio de alumnos por maestro por ciudad.
+          </p>
+          <p>
+            B: 1000(Bk - 0.63)^2, donde Bk es la proporción de personas de raza negra por ciudad.
+          </p>
+          <p>
+            LSTAT: porcentaje de población de menor estatus socioeconómico.
+          </p>
+          <p>
+            MEDV: media de las viviendas ocupadas por sus propietarios en miles de dólares.
+          </p>
+        </div>
+
+        <h3>Tipos de datos y rangos:</h3>
+
+        <p>Todos los tipos de datos son numéricos “reales regulares”.</p>
+        <p>Los rangos varían en todas las columnas:</p>
+        <p>ZN: 0 – 100</p>
+        <p>INDUS: 0.460 – 27.740</p>
+        <p>TAX: 233 – 666</p>
+
+        <h3>Distribuciones y outliers:</h3>
+        <p>
+          Hay varios otliers que pueden interferir en nuestros algrotimos, por ejemplo, en la 
+          columna de “Age” en algunos casos las edades están definidas con el siguiente 
+          formato: 98.800, 29.700, 83.400, etc.
+          También en la tabla “CRIM” la mayoría de los atributos se presentan entre cero y uno, 
+          pero hay valores fuera de rango de hasta 6 cifras.
+        </p>
+
+        <h3>¿Cuál es la variable de salida?</h3>
+        <p>
+          La variable de salida es “MEDV” ya que nos indica el valor medio de la casa.
+        </p>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-lg-12">
+          <h3>Preparación de los datos y construcción del modelo.</h3>
+          <img src="../utils/housing/modelo.jpeg" alt="modelo">
+        </div>
+        <p>Shuffle: Sirve para mezclar los datos.</p>
+        <p>Filter Example Range: Sirve para tomar un rango de datos.</p>
+        <p>
+          ¿Qué parámetros podemos variar en el operador “Linear Regression”? Feature 
+          selection, eliminate colinear features, min tolerance, use bias, ridge
+        </p>
+        <p>
+          Feature selection: Este parámetro decide si se debe seleccionar automáticamente 
+          un subconjunto de características relevantes para el modelo. Esto ayuda a evitar el 
+          sobreajuste y a reducir la complejidad del modelo.
+        </p>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-lg-12">
+          <h3>Validation</h3>
+          <img src="../utils/housing/validator.jpeg" alt="modelo">
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-lg-12">
+          <h3>Algunos de los resultados del modelo</h3>
+          <img src="../utils/housing/resultados.jpeg" alt="modelo">
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-lg-12">
+          <h3>Ejecucion e interpretación</h3>
+          <img src="../utils/housing/ejecucion.jpeg" alt="modelo">
+          <img src="../utils/housing/linear regression.jpeg" alt="linear">
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-lg-12">
+          <h3>Aplicación sobre datos “no vistos”</h3>
+          <img src="../utils/housing/no vistos.jpeg" alt="modelo">
+        </div>
+        <p>Se destaca que los outliers afectan el resultado de nuestra predicción.</p>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-lg-12 text-center">
+          <a href="../index.html" class="btn btn-secondary">Volver al Portafolio</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2024 Mi Portafolio. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
